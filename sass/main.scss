@@ -1,0 +1,55 @@
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+@import 'bases/animations';
+@import 'bases/base';
+@import 'bases/typography';
+@import 'bases/utilities';
+
+@import 'components/bg-video';
+@import 'components/button';
+@import 'components/card';
+@import 'components/composition';
+@import 'components/feature-box';
+@import 'components/form';
+@import 'components/popup';
+@import 'components/story';
+@import 'components/profile';
+@import 'components/timeline';
+
+@import 'layout/footer';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/navigation';
+
+@import 'pages/home';
+
+/* General Styles */
+
+/* icons */
+.icon-outer-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 1px;
+}
+
+
+
+.icon-inner-box {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 2px;
+}
+
+.icon-inner-box img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.gradient-border {
+  border-image: linear-gradient(45deg, #ff6b6b, #f7d079, #4ecdc4);
+  border-image-slice: 1;
+}

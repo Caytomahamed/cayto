@@ -1,0 +1,9 @@
+@keyframes moveUpDown {
+  0%,
+  100% {
+    transform: translateY(0); /* Start at the original position */
+  }
+  50% {
+    transform: translateY(-30px); /* Move up by 30px */
+  }
+}

@@ -1,0 +1,58 @@
+.profile {
+  @include flexCenter(row, center, flex-start);
+
+  &__box {
+    width: 12rem;
+    height: 12rem;
+    margin-right: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    border: 4px solid rgba(128, 0, 128, 0.686);
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        @include gradientBorder(4px, 50%, red, blue, #a52a2a);
+    }
+  }
+
+  &__content {
+    margin-top: 14px;
+    color: #a5a8a5;
+
+    &__description {
+      gap: 7px;
+      @include flexCenter(row, center, center);
+      margin-top: 6px;
+      color: gray;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #fff;
+    }
+  }
+
+  &__icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 1px;
+    @include gradientBorder(2px, 1px, red, blue, brown);
+
+    div {
+      @include flexCenter(row, center, center);
+      background-color: rgba(0, 0, 0, 0.93);
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 60%;
+      height: 60%;
+      object-fit: cover;
+    }
+  }
+}

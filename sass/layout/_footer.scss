@@ -1,0 +1,39 @@
+.footer {
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__social {
+    margin-bottom: 15px;
+
+    &-link {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ff9f55;
+      }
+    }
+  }
+
+  &__credits {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-style: italic;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,12 @@
+// width of pages
+.container {
+  width: 850px;
+  margin: 0 auto;
+}
+
+// center the content
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

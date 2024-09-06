@@ -1,0 +1,36 @@
+/**
+    @mixin gradientBorder
+    @param {number} $width - The width of the element.
+    @param {number} $height - The height of the element.
+    @param {number} $border-width - The width of the border.
+    @param {string} $color1 - The first color of the gradient.
+    @param {string} $color2 - The second color of the gradient.
+    @param {string} $color3 - The third color of the gradient.
+    @param {string} $color4 - The fourth color of the gradient.
+    @return {object} - The mixin for the gradient border.
+
+*/
+@mixin gradientBorder(
+  $width-gradien: 1px,
+  $border-width: 10px,
+  $color1: #ff6b6b,
+  $color2: #f7d079,
+  $color3: #4ecdc4
+) {
+  border: $width-gradien solid transparent;
+  border-radius: $border-width;
+  background-image: linear-gradient(white, white),
+    linear-gradient(45deg, $color1, $color2, $color3);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+// content align and justify
+@mixin flexCenter($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+
