@@ -10,3 +10,30 @@
   justify-content: center;
   align-items: center;
 }
+
+// taol tip
+.tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.461);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 1.6rem;
+}
+
+.tooltip-text-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.border-4 {
+  margin-top: 6rem;
+}

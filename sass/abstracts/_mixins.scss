@@ -15,11 +15,13 @@
   $border-width: 10px,
   $color1: #ff6b6b,
   $color2: #f7d079,
-  $color3: #4ecdc4
+  $color3: #4ecdc4,
+  $color4: #1e1e1e,
+  $color5: #1e1e1e,
 ) {
   border: $width-gradien solid transparent;
   border-radius: $border-width;
-  background-image: linear-gradient(white, white),
+  background-image: linear-gradient($color4, $color5),
     linear-gradient(45deg, $color1, $color2, $color3);
   background-origin: border-box;
   background-clip: content-box, border-box;
@@ -32,5 +34,3 @@
   justify-content: $justify;
   align-items: $align;
 }
-
-

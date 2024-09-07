@@ -14,16 +14,34 @@
     margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
+    gap: 7px;
 
     &__skill {
+      position: relative;
       width: 10rem;
       height: 10rem;
+
+      &:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+      }
 
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        transition: all 0.3s;
       }
     }
+  }
+}
+
+.projects {
+  &__box {
+    margin-top: 5rem;
+    @include flexCenter(row,center, center);
+    // background-color: red;
+    gap: 50px;
+    flex-wrap: wrap;
   }
 }

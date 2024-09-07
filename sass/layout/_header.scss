@@ -1,8 +1,8 @@
 .header {
-  height: 65vh;
+  height: 70vh;
   position: relative;
   width: 100%;
-  background: linear-gradient(rgba(28, 28, 28, 0.9), rgba(0, 0, 0, 1)),
+  background: linear-gradient(rgba(28, 28, 28, 0.9), #1e1e1e),
     url('https://i.pinimg.com/236x/8c/95/51/8c9551b26757a05cc91511f6df4ad6a5.jpg')
       no-repeat center center;
   background-size: cover;
@@ -15,11 +15,6 @@
     width: 7rem;
     height: 7rem;
     @include gradientBorder(4px, 50%, red, blue, #a52a2a);
-    opacity: 0.6;
-
-    &:hover {
-      opacity: 1;
-    }
 
     img {
       width: 100%;
@@ -38,17 +33,17 @@
   &__js {
     top: 16rem;
     left: 74rem;
-     animation: moveUpDown 6s ease-in-out infinite;
+    animation: moveUpDown 6s ease-in-out infinite;
   }
   &__php {
     top: 6rem;
     right: 26rem;
-     animation: moveUpDown 8s ease-in-out infinite;
+    animation: moveUpDown 8s ease-in-out infinite;
   }
 
   &__content {
     color: #ccc;
-    margin-bottom: 4rem;
+    // margin-bottom: 2rem;
 
     p {
       margin-top: 4rem;
