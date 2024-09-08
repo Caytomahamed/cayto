@@ -1,5 +1,4 @@
 
-console.log(window.location);
 const displayHeader = () => {
   const header = document.querySelector('header');
 

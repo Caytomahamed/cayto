@@ -39,9 +39,16 @@
 .projects {
   &__box {
     margin-top: 5rem;
-    @include flexCenter(row,center, center);
+    margin-bottom: 10rem;
+    @include flexCenter(row, center, center);
     // background-color: red;
     gap: 50px;
     flex-wrap: wrap;
+  }
+
+  &__intro {
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+    color: rgb(152, 152, 152);
   }
 }

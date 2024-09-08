@@ -8,7 +8,19 @@ const navItems = [
 const displayNav = () => {
   const nav = document.querySelector('.navbar');
 
-  const html = `<ul class="navbar__list">
+  const html = `
+  <div class="profile hide" >
+     <a href="/" class="/">
+     <div class="profile__header">
+        <img
+          src="assets/images/me.jpg"
+          alt="Profile Picture"
+          class="profile__box__img"
+        />
+      </div>
+     </a>
+        </div>
+  <ul class="navbar__list">
         ${navItems
           .map(
             (item) =>

@@ -4,6 +4,12 @@
   transition: all 0.1s; /* Smooth transition */
   width: 850px;
   color: #ccc;
+  padding-right: 3rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  
 
 
   &--sticky {

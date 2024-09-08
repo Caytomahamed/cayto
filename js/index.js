@@ -38,13 +38,16 @@ window.addEventListener('scroll', function () {
   const header = document?.querySelector('.header');
   const navbar = document.querySelector('.navbar');
   const headerHeight = header ? header.offsetHeight : 50;
+  const profile = navbar.querySelector('.profile');
 
   console.log(headerHeight);
 
   if (window.scrollY > headerHeight) {
-    console.log('headerHeight', headerHeight);
     navbar.classList.add('navbar--sticky');
+    profile.classList.remove('hide');
+
   }  else {
     navbar.classList.remove('navbar--sticky');
+    profile.classList.add('hide');
   }
 });
