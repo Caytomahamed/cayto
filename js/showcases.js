@@ -1,7 +1,4 @@
-const videos = [
-  './assets/uturn.mp4',
-  './assets/caraabe.mp4',
-];
+const videos = ['./assets/uturn.mp4', './assets/uturn.mp4'];
 
 const container = document.querySelector('.showcaseVideos');
 const parent = document.querySelector('.showcaseVideosContainer');
