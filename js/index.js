@@ -16,8 +16,6 @@ const nav = document.querySelector('.navbar');
 // display my header
 header && displayHeader();
 
-console.log(nav);
-
 // display my skills
 skillsContainer && displaySkill();
 
@@ -45,9 +43,14 @@ window.addEventListener('scroll', function () {
   if (window.scrollY > headerHeight) {
     navbar.classList.add('navbar--sticky');
     profile.classList.remove('hide');
-
-  }  else {
+  } else {
     navbar.classList.remove('navbar--sticky');
     profile.classList.add('hide');
   }
 });
+
+// mute the video sound
+const video = document.querySelector('.showupVideo');
+if (video) {
+  video.muted = true;
+}

@@ -9,6 +9,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -46,14 +50,14 @@
           </div>
 
           <h1 class="container primary-heading">Show Case</h1>
-          <video
-            controls
-            autoplay
-            loop
-            style="width: 100%; margin: 0 auto; margin-top: 10rem"
-          >
-            <source src="./assets/uturn.mp4" type="video/mp4" />
-          </video>
+          <div class="showcaseWrapper">
+            <button class="prev"><i class="fa fa-chevron-left"></i></button>
+            <div class="showcaseVideosContainer">
+              <div class="showcaseVideos"></div>
+            </div>
+            <button class="next"><i class="fa fa-chevron-right"></i></button>
+          </div>
+          <div class="pagination"></div>
         </div>
       </section>
     </main>
@@ -63,5 +67,6 @@
     </footer>
 
     <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/showcases.js"></script>
   </body>
 </html>

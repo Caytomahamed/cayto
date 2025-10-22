@@ -65,7 +65,7 @@ const projects = [
     heroImg: 'IEditor.png',
     description:
       'IEditor is a web-based code editor for writing and editing HTML, CSS, and JavaScript, with live preview functionality.',
-    tags: ['html', 'css', 'javascript', 'preview'],
+    tags: ['html', 'css', 'javascript'],
     viewLink: 'https://caytomahamed.github.io/IEditor',
     githubLink: 'https://github.com/Caytomahamed/IEditor.git',
   },
@@ -78,35 +78,19 @@ const displayCards = () => {
     .map(
       (project) =>
         `<div class="card">
-                    <img src="/assets/images/${
-                      project.heroImg
-                    } " alt="project" />
-
-                    <div class="card__content">
-                        <h3>${project.name}</h3>
-                        <p class="card__content__desc">
-                        ${project.description}
-                        </p>
-                        <div class="card__content__tags">
-                        ${project.tags
-                          .map((tag) => {
-                            return `<p class="card_tag_js" style="background:${skills[tag]}">${tag}</p>`;
-                          })
-                          .join('')}
-                        </div>
-                        <div class="card__content__source">
-                        <a href="${project.viewLink}"  ${
-          project.viewLink !== '#' ? 'target="_blank"' : ''
-        }  onclick="${
-          project.viewLink === '#' ? "alert('Coming Soon'); return false;" : ''
-        }">
-          <i class="fas fa-eye"></i>View</a>
-                        <a href="${
-                          project.githubLink
-                        }" target= "_blank"><i class="fas fa-solid fa-code"></i>Code</a>
-                        </div>
-                    </div>
-                    </div>`
+          <img src="/assets/images/${project.heroImg} " alt="project" />
+          <div class="card__content">
+            <h3>${project.name}</h3>
+                  <div class="card__content__tags">
+        ${project.tags
+          .map((tag) => {
+            return `<p class="card_tag_js" style="background:${skills[tag]}">${tag}</p>`;
+          })
+          .join('')}
+      </div>
+          </div>
+          </div>
+        </div>`
     )
     .join('');
 
@@ -114,3 +98,22 @@ const displayCards = () => {
 };
 
 export default displayCards;
+
+// <div class="card__content">
+//       <h3>${project.name}</h3>
+//       <p class="card__content__desc">${project.description}</p>
+
+//       <div class="card__content__source">
+//         <a
+//           href="${project.viewLink}"
+//           ${project.viewLink !== '#' ? 'target="_blank"' : ''}
+//           onclick="${project.viewLink === '#'
+//             ? "alert('Coming Soon'); return false;"
+//             : ''}"
+//         >
+//           <i class="fas fa-eye"></i>View</a
+//         >
+//         <a href="${project.githubLink}" target="_blank"
+//           ><i class="fas fa-solid fa-code"></i>Code</a
+//         >
+//       </div>
