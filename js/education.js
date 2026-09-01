@@ -3,9 +3,15 @@ const displayEducation = () => {
   const education = document.querySelector('.timeline');
 
   const html = `
-    <h1 class="container primary-heading">Education</h1>
+    <h1 class="container primary-heading">History</h1>
 
-    <div class="timeline__container timeline__container--right fade-in">
+    <p class="projects__intro">
+      A Computer Science degree paired with hands-on, project-based training
+      in full-stack engineering — the combination that shapes how I approach
+      every system I build.
+    </p>
+
+    <div class="timeline__container timeline__container--right fade-in-right">
       <div class="timeline__content">
         <h2 class="timeline__year">2024-2020</h2>
         <p class="timeline__text">
@@ -14,7 +20,17 @@ const displayEducation = () => {
       </div>
     </div>
 
-    <div class="timeline__container timeline__container--left fade-in">
+    <div class="timeline__container timeline__container--left fade-in-left">
+      <div class="timeline__content">
+        <h2 class="timeline__year">2023–24</h2>
+        <p class="timeline__text">
+          Volunteer Instructor — Taught a full-stack development course
+          (May 2023 – Apr 2024)
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline__container timeline__container--right fade-in-right">
       <div class="timeline__content">
         <h2 class="timeline__year">2022-2021</h2>
         <p class="timeline__text">
@@ -23,7 +39,16 @@ const displayEducation = () => {
       </div>
     </div>
 
-    <div class="timeline__container timeline__container--right fade-in">
+    <div class="timeline__container timeline__container--left fade-in-left">
+      <div class="timeline__content">
+        <h2 class="timeline__year">Feb 2021</h2>
+        <p class="timeline__text">
+          HTML, CSS & JS — JHU / Coursera
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline__container timeline__container--right fade-in-right">
       <div class="timeline__content">
         <h2 class="timeline__year">2020-2016</h2>
         <p class="timeline__text">
@@ -34,23 +59,6 @@ const displayEducation = () => {
   `;
 
   education.insertAdjacentHTML('beforeend', html);
-
-  // Animate elements when they scroll into view
-  const fadeElems = document.querySelectorAll('.fade-in');
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // optional: animate once
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  fadeElems.forEach((elem) => observer.observe(elem));
 };
 
 export default displayEducation;

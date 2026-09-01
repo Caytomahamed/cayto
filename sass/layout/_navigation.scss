@@ -45,20 +45,42 @@
       @include flexCenter(row, center, center);
       //   transform: translateY(-50%);
       border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover i {
+      transform: scale(1.1) rotate(-8deg);
     }
   }
 
   &__link {
+    position: relative;
     text-decoration: none;
     // font-size: 18px;
     color: #ccc;
     padding: 10px 5px;
-    transition: background-color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
     margin-left: 5px;
 
-    // &:hover {
-    //   background-color: #555;
-    //   border-radius: 5px;
-    // }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      bottom: 4px;
+      height: 2px;
+      background: purple;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: #fff;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
   }
 }

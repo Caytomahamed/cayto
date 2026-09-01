@@ -4,18 +4,32 @@ const displayFoooter = () => {
   const html = `   <h1 class="container primary-heading">Footer</h1>
       <div class="footer__container">
         <div class="footer__social">
-          <a href="https://github.com/yourprofile" class="footer__social-link"
+          <a
+            href="https://github.com/Caytomahamed"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener"
             >GitHub</a
           >
-          <a href="https://github.com/yourprofile" class="footer__social-link"
+          <a
+            href="https://www.facebook.com/suldaan.cidwalba?mibextid=ZbWKwL"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener"
             >Facebook</a
           >
           <a
-            href="https://linkedin.com/in/yourprofile"
+            href="https://www.linkedin.com/in/aidarous-mohomed-b63827204"
             class="footer__social-link"
+            target="_blank"
+            rel="noopener"
             >LinkedIn</a
           >
-          <a href="https://twitter.com/yourprofile" class="footer__social-link"
+          <a
+            href="https://x.com/Caytomaxmed"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener"
             >Twitter</a
           >
         </div>

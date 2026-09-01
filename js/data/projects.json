@@ -1,0 +1,203 @@
+[
+  {
+    "id": "roomsnap-chat",
+    "name": "RoomSnap Chat",
+    "type": "app",
+    "heroImg": "projects/roomsnap/00.png",
+    "gallery": [
+      "projects/roomsnap/00.png",
+      "projects/roomsnap/01.png",
+      "projects/roomsnap/02.png",
+      "projects/roomsnap/03.png"
+    ],
+    "description": "A production real-time chat app for Android — OTP login, multi-room messaging, and Cloudflare-backed media. Architected, shipped, and held at 100% uptime through the client's busiest week.",
+    "role": "Independent Software Engineer",
+    "duration": "2026",
+    "tags": [
+      "reactnative",
+      "expo",
+      "typescript",
+      "nodejs",
+      "postgresql",
+      "redis",
+      "socketio",
+      "r2",
+      "railway"
+    ],
+    "viewLink": "#",
+    "githubLink": "#",
+    "overview": "RoomSnap is a real-time chat platform I architected and deployed end-to-end for Android as an independent contractor. It's a mobile-first product built on a deliberately cost-efficient stack: a React Native/Expo client, an API hosted on Railway, Postgres for persistence, and Upstash Redis for caching — sized to stay fast and cheap to run under real production traffic rather than over-engineered for scale it didn't need yet.",
+    "features": [
+      "Secure OTP authentication with multi-room chat configurations",
+      "Real-time messaging via Socket.io, including admin-only media broadcast and deletion controls",
+      "Cloudflare R2-backed media storage with lazy-loaded thumbnails and blurred placeholders",
+      "EAS Build and EAS Update pipeline for Android APK compilation and over-the-air updates",
+      "Maintained 100% application reliability through the client's peak traffic period"
+    ],
+    "challenges": "This was a commercial engagement, so the build and the deal terms shaped each other. I structured the licensing so the client got a production-ready APK while I kept the source, which meant the deployment pipeline — EAS Build/Update, Railway, Cloudflare R2 — had to be clean enough to hand off operationally without handing over the codebase."
+  },
+  {
+    "id": "kiro-dhow",
+    "name": "Kiro Dhow",
+    "type": "web",
+    "heroImg": "projects/kirodhow/00.PNG",
+    "gallery": [
+      "projects/kirodhow/00.PNG",
+      "projects/kirodhow/01.PNG",
+      "projects/kirodhow/02.PNG",
+      "projects/kirodhow/03.PNG"
+    ],
+    "description": "A full-stack rental platform that replaces paper receipts and scattered chats with role-based dashboards, live landlord–tenant messaging, map-based property search, and automated rent billing.",
+    "role": "Full Stack Developer",
+    "duration": "3 months",
+    "tags": [
+      "react",
+      "redux-toolkit",
+      "material-ui",
+      "node.js",
+      "express",
+      "knex.js",
+      "socket.io",
+      "mysql"
+    ],
+    "viewLink": "https://kirodhow.onrender.com/",
+    "githubLink": "https://github.com/Caytomahamed/RentHouseMS.git",
+    "overview": "Kiro Dhow digitizes the entire residential leasing lifecycle into a single web application. Replacing fragmented communication, paper receipts, and manual tracking, the platform delivers isolated portals for tenants, landlords, and system administrators—handling everything from map-based property search to automated lease billing and real-time maintenance dispatching.",
+    "features": [
+      "Multi-tenant RBAC architecture with isolated dashboards and JWT auth for Tenants, Landlords, and Admins",
+      "Real-time bidirectional landlord-tenant messaging powered by Socket.io with unread indicators",
+      "Interactive property search engine integrated with Leaflet maps and Material-UI filtering",
+      "End-to-end lease lifecycle management featuring automated rent billing via Node-cron background jobs",
+      "Centralized maintenance ticketing system with Multer file uploads and resolution state tracking",
+      "Financial and occupancy reporting suite visualised with Chart.js"
+    ],
+    "challenges": "The hardest part was keeping one codebase honest across two databases — SQLite in development, MySQL in production — so every schema change went through Knex.js migrations to stop drift before it started. Keeping WebSocket events and Redux state in sync took the same care, so the UI never showed a stale number."
+  },
+  {
+    "id": "hargeisa-hackathon-mvp",
+    "name": "University of Hargeisa Hackathon — 1st Place",
+    "type": "app",
+    "heroImg":  "projects/uturn/00.PNG",
+    "gallery": [
+      "projects/uturn/00.PNG",
+      "projects/uturn/01.PNG",
+      "projects/uturn/02.PNG",
+      "projects/uturn/03.PNG"
+    ],
+    "description": "A university ride-sharing platform — React Native app, React admin dashboard, and an Express API — designed, built, and shipped in 48 hours to take 1st place out of 8 teams.",
+    "role": "Team Lead",
+    "duration": "48 hours",
+    "tags": ["reactnative", "expressjs", "postgresql", "socketio"],
+    "viewLink": "#",
+    "githubLink": "#",
+    "overview": "Led a cross-functional team to design, build, and ship a full-stack ride-sharing platform for the University of Hargeisa student body in a 48-hour sprint: a React Native mobile app for students and drivers, a React-based admin dashboard, and an Express.js REST API tying it together. The submission won 1st place out of 8 competing teams.",
+    "features": [
+      "Ride booking, driver assignment, and route/schedule management",
+      "Real-time notifications and booking cancellation over Socket.io",
+      "Secure REST APIs with JWT authentication and role-based access control",
+      "Relational database schema supporting operational reporting and analytics"
+    ],
+    "challenges": "The constraint was time, not scope — with 48 hours on the clock and three surfaces to build (mobile app, admin dashboard, API), the real work was scoping ruthlessly as team lead so every piece shipped working end-to-end instead of one polished feature surrounded by half-finished ones."
+  },
+  {
+    "id": "somaliland-voting-management-system",
+    "name": "Somaliland Voting Management System",
+    "type": "web",
+    "heroImg": "projects/vote/00.PNG",
+    "gallery": [
+      "projects/vote/00.PNG",
+      "projects/vote/01.PNG",
+      "projects/vote/02.PNG",
+      "projects/vote/03.PNG"
+    ],
+    "description": "An election results dashboard rebuilt for results night — 10 parties, 6 regions, and dense data tables turned into histograms and maps stakeholders can read at a glance.",
+    "role": "Frontend / Full-Stack Developer",
+    "duration": "Aug 2024 – Oct 2024",
+    "tags": ["reactjs", "nodejs", "javascript", "mongodb"],
+    "viewLink": "#",
+    "githubLink": "#",
+    "overview": "Somaliland's election results were originally tracked through dense, static data tables that buried the signal stakeholders actually needed. I redesigned the dashboard to track 10 political parties across 6 regions, eliminating the data overload that was slowing down decision-making.",
+    "features": [
+      "Collapsible sidebar architecture for better layout scalability and mobile responsiveness",
+      "Static data tables converted into interactive histograms and geographic maps",
+      "Real-time performance reporting for election stakeholders",
+      "Dynamic filtering by region to speed up administrative decision-making"
+    ],
+    "challenges": "The biggest challenge was information density — the original dashboard tried to show everything at once. Rebuilding it around a collapsible sidebar and interactive visualizations meant rethinking the information hierarchy so stakeholders could drill into a single region without losing the national picture."
+  },
+
+  {
+    "id": "caraabe",
+    "name": "Caraabe",
+    "type": "web",
+    "heroImg": "projects/caraabe/00.png",
+    "gallery": [
+      "projects/caraabe/00.png",
+      "projects/caraabe/01.png",
+      "projects/caraabe/02.png",
+      "projects/caraabe/03.png"
+    ],
+    "description": "A regional bus booking system: riders pick seats on an interactive map and pay with Zaad mobile money, while admins run routes, fleets, and payment checks from a single panel.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
+    "tags": ["php", "mysql", "javascript", "css", "html5"],
+    "viewLink": "#",
+    "githubLink": "https://github.com/Caytomahamed/Transportation-MS.git",
+    "overview": "Caraabe digitizes regional bus operations by replacing manual processes with real-time seat tracking and mobile payments. Built with native PHP and MySQL, it features dynamic 2+aisle+2 bus seat selection, automated Zaad USSD payment workflows, round-trip discount linking, and QR code ticket generation.",
+    "features": [
+      "Interactive seat selection (2+aisle+2 layout) with driver seat reservation protection",
+      "Integrated Zaad mobile money payment workflow with USSD code generator and admin verification",
+      "Round-trip booking engine using 4-digit linked discount codes",
+      "Dynamic digital tickets featuring QR codes and active status tracking",
+      "Admin suite for bus fleet management, weekly recurring schedules, and route occupancy reporting"
+    ],
+    "challenges": "With no ORM to lean on, seat locking was raw PHP and MySQL: two riders hitting the same seat in the same second couldn't both win it, and the recurring weekly schedules had to generate cleanly without ever double-booking a seat."
+  },
+  {
+    "id": "e-fiiri",
+    "name": "E-Fiiri",
+    "type": "web",
+    "heroImg": "projects/E-fiiri/00.png",
+    "gallery": [
+      "projects/E-fiiri/00.png",
+      "projects/E-fiiri/01.png",
+      "projects/E-fiiri/02.png",
+      "projects/E-fiiri/03.png"
+    ],
+    "description": "A football league manager that publishes standings, fixtures, and rosters online — and recalculates the table automatically from every match result.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
+    "tags": ["css", "javascript", "php", "mysql"],
+    "viewLink": "#",
+    "githubLink": "https://github.com/Caytomahamed/RentHouseMS.git",
+    "overview": "E-Fiiri gives local football leagues a simple way to publish standings, fixtures, and player rosters online, instead of updating a printed table after every matchday.",
+    "features": [
+      "Automatically calculated league standings from match results",
+      "Team and player profile pages",
+      "Fixture scheduling with upcoming and past matches",
+      "Live score updates during matchdays"
+    ],
+    "challenges": "Getting the standings table to recalculate correctly (points, goal difference, head-to-head) directly from raw match results in SQL took a few iterations to get right."
+  },
+  {
+    "id": "ieditor",
+    "name": "IEditor",
+    "type": "web",
+    "heroImg": "IEditor.png",
+    "gallery": ["IEditor.png"],
+    "description": "A browser-based code playground for HTML, CSS, and JavaScript with an instant live preview — no setup, no build step, everything runs client-side.",
+    "role": "Frontend Developer",
+    "duration": "3 weeks",
+    "tags": ["html", "css", "javascript"],
+    "viewLink": "https://caytomahamed.github.io/IEditor",
+    "githubLink": "https://github.com/Caytomahamed/IEditor.git",
+    "overview": "IEditor is a lightweight, in-browser code playground for HTML, CSS, and JavaScript. I built it to have a fast, no-setup place to prototype UI ideas, similar to CodePen, with an instant live preview pane.",
+    "features": [
+      "Three-pane editor for HTML, CSS, and JavaScript",
+      "Live preview that updates as you type",
+      "Syntax-friendly editor panes with resizable layout",
+      "Runs entirely client-side, no build step required"
+    ],
+    "challenges": "Rendering the live preview safely and efficiently on every keystroke, without a heavy framework, meant writing a small debounce layer and injecting the combined output into a sandboxed iframe."
+  }
+]

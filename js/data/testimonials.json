@@ -1,0 +1,33 @@
+[
+  {
+    "id": "duraan-ali",
+    "quote": "Masha allah, aad baan ugu faraxsanahay inaa horay usii socotay oo skill-kii aad laheyd aa isticmaasho, markasta waan ogaa intaa tahay one of the most talented guys aan ku arkay iskuulka.<br /><br />Markastoon qof kala hadlo Gabi School adigaan example kuu soo qaataa maxaa yeelay sidaa wax u qaban jirtay, professional way.",
+    "translation": "Mashallah, I'm so happy to see you keep growing and putting the skills you had to good use — I always knew you were one of the most talented guys I'd seen at the school.<br /><br />Whenever I talk to someone about Gabi School, you're the example I bring up, because of how professionally you used to handle things.",
+    "name": "Duraan Ali",
+    "role": "Instructor, Gabi School of Technology"
+  },
+  {
+    "id": "hamse-hassan",
+    "quote": "I hired Aidarous to build RoomSnap and he delivered exactly what we agreed on — a real-time chat app that just worked. Auth, media, live messaging, the Android build, all of it shipped and held up through our busiest week without a single outage.<br /><br />He handled the whole thing on his own, kept me updated the whole way, and handed over a production-ready app I could put in front of users straight away. Easy to work with and completely reliable.",
+    "name": "Hamse Hassan",
+    "role": "Client, RoomSnap Chat"
+  },
+  {
+    "id": "hackathon-dean",
+    "quote": "Aidarous's team stood out at our hackathon from the first day. In under 48 hours he led them to build a full ride-sharing platform for our students — a mobile app, an admin dashboard, and the API behind it — and every piece actually worked in the demo.<br /><br />His leadership and the way he scoped the work were a big part of why they took 1st place out of eight teams. Exactly the kind of student we're proud to have represent the University of Hargeisa.",
+    "name": "Ceelaabe",
+    "role": "Dean, University of Hargeisa"
+  },
+  {
+    "id": "hackathon-judge",
+    "quote": "As a judge I saw eight submissions, and Aidarous's was the one that felt like a real product rather than a prototype. They shipped three connected surfaces — student app, driver flow, and admin dashboard — with live notifications and proper authentication, all inside the 48-hour window.<br /><br />What earned them 1st place was that it was complete and it ran. Nothing was faked for the demo. Clear technical lead, clear priorities, well deserved.",
+    "name": "Mukhtaar",
+    "role": "Judge, University of Hargeisa Hackathon"
+  },
+  {
+    "id": "kaah-party",
+    "quote": "Aidarous rebuilt our election results dashboard into something we could actually use on results night. Ten parties, six regions, and instead of scrolling through dense tables our team could open a region, read the histograms and maps, and get the picture in seconds.<br /><br />The real-time reporting and the region filtering changed how quickly we could respond. He understood what stakeholders needed to see and delivered a tool that held up under pressure.",
+    "name": "Kaah Party",
+    "role": "Client, Somaliland Voting Management System"
+  }
+]

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
+    <link rel="icon" type="image/jpeg" href="assets/images/me.jpg" />
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -24,7 +25,7 @@
             Projects
           </h1>
 
-          <p class="projects__intro">
+          <p class="projects__intro fade-in">
             Welcome to the Project Page of
             <span class="highlight"> Aidarous!</span>
             <br />
@@ -38,6 +39,18 @@
               web development, database management, and user interface design.</span
             >
           </p>
+
+          <div class="projects__filters fade-in">
+            <button type="button" class="filter-btn active" data-filter="all">
+              All
+            </button>
+            <button type="button" class="filter-btn" data-filter="web">
+              Web
+            </button>
+            <button type="button" class="filter-btn" data-filter="app">
+              App
+            </button>
+          </div>
 
           <div class="projects__box">
             <!-- Cards -->

@@ -1,0 +1,134 @@
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #2c2c2c;
+    padding: 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.3s, transform 0.3s;
+
+    &:hover {
+      background-color: #3c3c3c;
+      transform: translateY(-4px);
+    }
+
+    &:hover i {
+      transform: scale(1.1);
+    }
+
+    i {
+      width: 4.5rem;
+      height: 4.5rem;
+      min-width: 4.5rem;
+      border-radius: 10px;
+      background-color: #4a1a5c55;
+      color: purple;
+      font-size: 1.8rem;
+      @include flexCenter(row, center, center);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__value {
+    font-size: 1.7rem;
+    margin-top: 4px;
+    word-break: break-word;
+  }
+}
+
+.contact__socials {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+
+  a {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 1.8rem;
+    @include flexCenter(row, center, center);
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: purple;
+      transform: translateY(-4px);
+    }
+  }
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2c2c2c;
+  padding: 3rem;
+  border-radius: 10px;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: 1.5rem;
+      color: gray;
+    }
+
+    input,
+    textarea {
+      background-color: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      color: #fff;
+      font-size: 1.6rem;
+      font-family: inherit;
+      resize: vertical;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+        border-color: purple;
+      }
+    }
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+
+  &__note {
+    font-size: 1.4rem;
+    color: #4caf50;
+    min-height: 1.8rem;
+
+    &--error {
+      color: #ff6b6b;
+    }
+  }
+}

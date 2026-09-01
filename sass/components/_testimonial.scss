@@ -1,0 +1,93 @@
+// Float-column layout (same technique as w3schools' "Responsive Image Grid"):
+// each card floats into a column instead of sitting in a CSS Grid row, so a
+// tall card doesn't force its row-mate to stretch to match its height.
+.testimonials {
+  &__grid {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+.testimonial-card {
+  float: left;
+  width: 50%;
+  padding: 15px;
+
+  &__inner {
+    height: 100%;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: 2.5rem;
+    transition: transform $dur-base $ease-out,
+      background-color $dur-base $ease-out, border-color $dur-base $ease-out,
+      box-shadow $dur-base $ease-out;
+  }
+
+  &:hover &__inner {
+    background-color: #3c3c3c;
+    border-color: rgba(128, 0, 128, 0.45);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
+  }
+
+  &__icon {
+    display: block;
+    font-size: 2rem;
+    color: purple;
+    margin-bottom: 1.5rem;
+    transition: transform $dur-base $ease-spring;
+  }
+
+  &:hover &__icon {
+    transform: scale(1.15);
+  }
+
+  &__quote {
+    margin: 0 0 2rem;
+    font-size: 1.7rem;
+    line-height: 1.6;
+    color: #ddd;
+    font-style: italic;
+  }
+
+  &__translation {
+    margin: 0 0 2rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid #444;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: gray;
+  }
+
+  &__translation-label {
+    display: block;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: purple;
+    margin-bottom: 0.8rem;
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  &__role {
+    font-size: 1.4rem;
+    color: gray;
+  }
+}

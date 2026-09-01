@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
+    <link rel="icon" type="image/jpeg" href="assets/images/me.jpg" />
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -30,15 +31,25 @@
         <div class="container">
           <h1 class="container primary-heading">About Me</h1>
 
-          <p>
-            Hey, I am Aidarous; A self-taught and graduated Full Stack Software
-            Engineer. 💻 🚀 <br /><br />
-            Since I was a kid, I have been fascinated by computers and enjoyed
-            the process of creating things. 🔨💡 <br /><br />
-            As a result, I pursued a career in Software Engineering, which
-            combines my interests in technology and creation. 🙌
+          <p class="fade-in">
+            I'm Aidarous Mohamed, a results-driven full-stack and mobile
+            developer based in Hargeisa, Somaliland, working primarily across
+            React Native and Flutter on the client side and Node.js/Express
+            with PostgreSQL on the backend.
             <br /><br />
-            Here are some of the things I am good at
+            I led a team to 1st place at the University of Hargeisa Hackathon
+            with a full-stack ride-sharing platform built in 48 hours, and
+            most of my freelance work since has followed the same pattern —
+            complete products rather than isolated features: a production
+            real-time chat app for Android, election dashboards, and
+            enterprise logistics and inventory systems, usually as the sole
+            developer covering architecture, backend integrations, and
+            deployment.
+            <br /><br />
+            I also spent a year volunteering as a full-stack instructor,
+            teaching the same stack I build with day to day.
+            <br /><br />
+            Here is what I bring to the table:
           </p>
 
           <div class="about__skills">
@@ -48,16 +59,71 @@
           <div class="timeline">
             <!-- My education   -->
           </div>
+        </div>
+      </section>
 
-          <h1 class="container primary-heading">Show Case</h1>
-          <div class="showcaseWrapper">
-            <button class="prev"><i class="fa fa-chevron-left"></i></button>
-            <div class="showcaseVideosContainer">
-              <div class="showcaseVideos"></div>
-            </div>
-            <button class="next"><i class="fa fa-chevron-right"></i></button>
+      <section class="projects" id="projects">
+        <div class="container">
+          <h1 class="container primary-heading primary-heading__other">
+            Projects
+          </h1>
+
+          <p class="projects__intro fade-in">
+            A few things I have
+            <span class="highlight">designed, built, and shipped</span>.
+          </p>
+
+          <div class="projects__box" data-limit="3">
+            <!-- Cards -->
           </div>
-          <div class="pagination"></div>
+
+          <div class="center fade-in">
+            <a href="/projects.html" class="btn btn--outline">View All Projects</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials" id="testimonials">
+        <div class="container">
+          <h1 class="container primary-heading primary-heading__other">
+            Testimonials
+          </h1>
+
+          <p class="projects__intro fade-in">
+            What
+            <span class="highlight">clients, teammates, and mentees</span>
+            have said about working with me.
+          </p>
+
+          <div class="testimonials__grid">
+            <!-- Testimonials -->
+          </div>
+        </div>
+      </section>
+
+      <section class="blog" id="blog">
+        <div class="container">
+          <h1 class="container primary-heading primary-heading__other">
+            Blog
+          </h1>
+
+          <p class="projects__intro fade-in">
+            Thoughts on
+            <span class="highlight">system design</span>,
+            <span class="highlight">DevOps</span>, and the
+            <span class="highlight">software development life cycle</span>,
+            based on the real problems I run into while building projects
+            like Kiro Dhow, RoomSnap, and the University of Hargeisa
+            Hackathon MVP.
+          </p>
+
+          <div class="blog__grid" data-limit="3">
+            <!-- My blog posts -->
+          </div>
+
+          <div class="center fade-in">
+            <a href="/blogs.html" class="btn btn--outline">View All Posts</a>
+          </div>
         </div>
       </section>
     </main>
@@ -67,6 +133,5 @@
     </footer>
 
     <script type="module" src="js/index.js"></script>
-    <script type="module" src="js/showcases.js"></script>
   </body>
 </html>

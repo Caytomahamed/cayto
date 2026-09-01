@@ -4,6 +4,12 @@ import displayFoooter from './footer.js';
 import displayHeader from './header.js';
 import displayNav from './nav.js';
 import displaySkill from './skills.js';
+import displayProjectDetails from './projectDetails.js';
+import displayBlogs from './blogs.js';
+import displayBlogDetails from './blogDetails.js';
+import displayTestimonials from './testimonials.js';
+import initContactForm from './contact.js';
+import initScrollReveal from './animations.js';
 
 // check if exist then display
 const skillsContainer = document.querySelector('.about__skills');
@@ -12,6 +18,11 @@ const education = document.querySelector('.timeline');
 const footer = document.querySelector('footer');
 const cardCon = document.querySelector('.projects__box');
 const nav = document.querySelector('.navbar');
+const projectDetailBox = document.querySelector('.project-detail');
+const blogGrid = document.querySelector('.blog__grid');
+const blogDetailBox = document.querySelector('.blog-detail');
+const testimonialsGrid = document.querySelector('.testimonials__grid');
+const contactForm = document.querySelector('#contactForm');
 
 // display my header
 header && displayHeader();
@@ -31,6 +42,27 @@ cardCon && displayCards();
 // display Nav
 nav & displayNav();
 
+// display project details
+projectDetailBox && displayProjectDetails();
+
+// display blog list
+blogGrid && displayBlogs();
+
+// display blog details
+blogDetailBox && displayBlogDetails();
+
+// display testimonials
+testimonialsGrid && displayTestimonials();
+
+// wire up contact form
+contactForm && initContactForm();
+
+// fade the page in once styles are applied
+document.body.classList.add('loaded');
+
+// reveal content on scroll
+initScrollReveal();
+
 // sticky navbar
 window.addEventListener('scroll', function () {
   const header = document?.querySelector('.header');
@@ -48,9 +80,3 @@ window.addEventListener('scroll', function () {
     profile.classList.add('hide');
   }
 });
-
-// mute the video sound
-const video = document.querySelector('.showupVideo');
-if (video) {
-  video.muted = true;
-}

@@ -1,0 +1,240 @@
+[
+  {
+    "id": "software-development-life-cycle-lessons",
+    "title": "The Software Development Life Cycle, in Six Lessons",
+    "category": "Software Engineering",
+    "icon": "fas fa-layer-group",
+    "date": "2026-08-10",
+    "readTime": "12 min read",
+    "excerpt": "A six-lesson tour of the SDLC — requirements through maintenance — each one grounded in something I actually shipped, from a 48-hour hackathon build to a production chat app.",
+    "content": [
+      {
+        "heading": "Why I think about it as lessons, not phases",
+        "paragraphs": [
+          "Every textbook draws the software development life cycle as a clean loop: requirements, design, development, testing, deployment, maintenance, back to requirements. It is a useful map, but it is not what the work feels like from the inside. What actually sticks with me is not the diagram, it is the specific moment on a specific project where a phase went wrong and taught me something.",
+          "So instead of another SDLC overview, this is a six-lesson series inside one post — one lesson per stage, each one tied to a real project: a rental platform, an election dashboard, a 48-hour hackathon build, an egg-logistics MVP, and a production chat app I still operate today. Read it as a series if you want, or jump to the stage you are currently stuck on."
+        ]
+      },
+      {
+        "heading": "Lesson 1 — Requirements: the brief is a starting point, not a spec",
+        "paragraphs": [
+          "On the Somaliland Voting Management System, the original ask was simple: \"the dashboard is confusing, fix it.\" That is not a requirement, that is a symptom. The real requirement only showed up after I sat with how stakeholders actually used the tool — they needed to compare one region against the national picture without losing context, which is a very different problem than \"add more charts.\"",
+          "Agri-Teach reinforced the same lesson from the opposite direction: the client described one user, but the actual workflow needed five distinct roles — Admin, Warehouse, Farmer, Quality Checker, and Salesman — each seeing a different slice of the same data. Requirements gathering, for me, is less about writing down what someone asks for and more about finding the roles and decisions hiding underneath the ask."
+        ]
+      },
+      {
+        "heading": "Lesson 2 — Design: pick the architecture the project can afford",
+        "paragraphs": [
+          "Kiro Dhow's schema design taught me to design for environment parity, not just for the happy path: I built it on Knex.js migrations that run unmodified against SQLite3 locally and MySQL in production, so a schema change I tested on my laptop behaved identically once deployed. That one decision removed an entire category of \"works on my machine\" bugs before they could exist.",
+          "RoomSnap taught me the opposite lesson about the same skill — restraint. I deliberately chose a lean stack (Railway for the API, Postgres for persistence, Upstash Redis for caching) sized for the traffic the app actually had, not the traffic it might someday get. Good system design is not the most scalable architecture you can imagine, it is the smallest one that will not need a rewrite for the problem in front of you."
+        ]
+      },
+      {
+        "heading": "Lesson 3 — Development: scope is the real deliverable",
+        "paragraphs": [
+          "The University of Hargeisa Hackathon compressed the entire development phase into 48 hours across three surfaces — a React Native app, a React admin dashboard, and an Express API. There was no time to write the ideal version of anything.",
+          "As team lead, my actual job during those 48 hours was not writing code, it was deciding what not to build: which surfaces got the polish and which got the bare minimum that still worked end-to-end. We won 1st place out of 8 teams not because any one piece was the most impressive, but because every piece we shipped actually worked together. Development discipline, under real constraints, is mostly scope discipline."
+        ]
+      },
+      {
+        "heading": "Lesson 4 — Testing: build the verification step into the workflow itself",
+        "paragraphs": [
+          "Agri-Teach's quality-inspection workflow is, functionally, a testing problem wearing a business-process costume: a Quality Checker flags an issue with proof-image uploads, and that flag has to move through an approval chain to Warehouse and Salesman without stalling daily distribution. Leaning on TypeScript and a modular architecture kept that verification chain reliable as more roles and edge cases got added.",
+          "The lesson generalizes past that one feature: testing works best when it is a structural part of the workflow (a required approval step, a typed contract between modules) rather than a separate checklist someone has to remember to run."
+        ]
+      },
+      {
+        "heading": "Lesson 5 — Deployment: the pipeline is part of the product",
+        "paragraphs": [
+          "RoomSnap is a mobile app, which means \"deploy\" is not a git push — it is an EAS Build and EAS Update pipeline that compiles an Android APK and pushes over-the-air updates without forcing users through the Play Store every time. Because this was commercial client work, the pipeline also had to support a specific business constraint: the client needed a production-ready APK while I retained the source code, so the release process had to be clean enough to hand off operationally without handing over the codebase.",
+          "Kiro Dhow's deployment problem was simpler on the surface — push to Render — but the lesson was the same shape: the deployment pipeline is not an afterthought bolted onto the finished product, it is a design constraint you should be shaping from early on."
+        ]
+      },
+      {
+        "heading": "Lesson 6 — Maintenance: the lifecycle loops, it doesn't end",
+        "paragraphs": [
+          "Kiro Dhow's cron-scheduled billing tasks and real-time landlord-tenant messaging did not exist on day one — they showed up after launch, once real usage revealed what the first version was missing. RoomSnap's \"maintained 100% application reliability through the client's peak traffic period\" line only means something because I was still actively operating it after shipping, not walking away once the APK was delivered.",
+          "This is also the lesson I spent a year teaching directly: as a volunteer full-stack instructor, I watched 80% of my cohort successfully deploy their first application to production — and deployment day was never the finish line for any of them, it was the moment the maintenance lessons actually started."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "scaling-rental-marketplace",
+    "title": "Designing a Scalable Rental Marketplace: Lessons from Kiro Dhow",
+    "category": "System Design",
+    "icon": "fas fa-sitemap",
+    "date": "2026-03-02",
+    "readTime": "7 min read",
+    "excerpt": "How I structured the data model, API, and auth flow for Kiro Dhow so it could grow from a handful of listings to thousands without a rewrite.",
+    "content": [
+      {
+        "heading": "The problem",
+        "paragraphs": [
+          "When I started building Kiro Dhow, a rental management platform connecting tenants and landlords, the first design decision was not the UI. It was how to model landlords, properties, tenants, leases, and payments so the system could grow without needing a rewrite six months in.",
+          "A naive schema treats \"users\" as one table with a role flag. That works for a demo, but it breaks down fast once landlords need multiple properties, tenants need multiple leases, and payments need to be tied to a specific lease rather than a person."
+        ]
+      },
+      {
+        "heading": "Modeling the core entities",
+        "paragraphs": [
+          "I split the domain into five core entities: User, Property, Lease, Payment, and MaintenanceRequest. A User has a role (landlord, tenant, admin), a Property belongs to a landlord, a Lease links a tenant to a property for a time period, and Payments and MaintenanceRequests both hang off a Lease rather than a raw user.",
+          "This mattered because rent history and maintenance history needed to survive a tenant moving out and a new one moving in. Tying records to the Lease, not the User, kept that history intact and made reporting per-property straightforward."
+        ]
+      },
+      {
+        "heading": "API and access control",
+        "paragraphs": [
+          "On top of that schema, I built a REST API with Express and protected every route with JWT-based auth plus a role check middleware. Landlords can only query properties and leases they own; tenants can only see their own lease and payment history. That authorization logic lives in one middleware layer so it is enforced consistently instead of being re-checked in every controller."
+        ]
+      },
+      {
+        "heading": "What I would do differently",
+        "paragraphs": [
+          "If I rebuilt it today, I would introduce a lightweight event log for payments and maintenance status changes early on, instead of only storing current state. Landlords kept asking \"when did this get marked as paid?\" and I ended up bolting on timestamps after the fact. Designing for history from day one is cheaper than retrofitting it."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "multi-tenant-schema-design",
+    "title": "How I Approach Database Schema Design for Multi-Tenant Apps",
+    "category": "System Design",
+    "icon": "fas fa-database",
+    "date": "2026-02-14",
+    "readTime": "6 min read",
+    "excerpt": "Shared tables with a tenant_id column, versus separate schemas per tenant: the tradeoffs I weigh before picking one for a new project.",
+    "content": [
+      {
+        "heading": "Why this decision matters early",
+        "paragraphs": [
+          "Multi-tenancy shows up more often than people expect, not just in obvious SaaS products, but any system with landlords and properties, schools and classes, or companies and employees. Getting the isolation model right at the start saves painful migrations later."
+        ]
+      },
+      {
+        "heading": "Three common approaches",
+        "paragraphs": [
+          "The simplest is a shared table with a tenant_id (or landlord_id, company_id, etc.) column on every row, filtered in every query. It is easy to build and cheap to run, but it puts the burden of correctness on application code — one missing WHERE clause and you leak data across tenants.",
+          "A stricter option is a separate schema per tenant inside the same database. This gives real isolation at the database level and makes it harder to leak data by accident, at the cost of more complex migrations, since every schema change has to run against every schema.",
+          "The heaviest option is a fully separate database per tenant, which is usually overkill unless you have compliance requirements demanding physical data separation."
+        ]
+      },
+      {
+        "heading": "What I default to",
+        "paragraphs": [
+          "For most of the projects I build, like Kiro Dhow or Caraabe, I default to the shared-table approach with a tenant/owner column, but I push the filtering logic into a single query-building layer instead of scattering it across controllers. That way \"did I forget the tenant filter\" becomes a one-place-to-check problem instead of a per-endpoint audit.",
+          "I only reach for schema-per-tenant when a client explicitly needs strong data isolation guarantees, because the operational cost of running migrations across N schemas is real and grows with every tenant you onboard."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "caching-strategies-backend",
+    "title": "Caching Strategies Every Backend Developer Should Know",
+    "category": "System Design",
+    "icon": "fas fa-bolt",
+    "date": "2026-01-20",
+    "readTime": "8 min read",
+    "excerpt": "A practical walkthrough of cache-aside, write-through, and TTL-based invalidation, with the failure modes that actually bite you in production.",
+    "content": [
+      {
+        "heading": "Why caching is a system design topic, not just a performance trick",
+        "paragraphs": [
+          "Caching looks like a simple optimization until you have to reason about what happens when the cache and the database disagree. The real design work is choosing an invalidation strategy you can trust, not just adding Redis in front of a slow query."
+        ]
+      },
+      {
+        "heading": "Cache-aside (lazy loading)",
+        "paragraphs": [
+          "The application checks the cache first; on a miss, it reads from the database and writes the result into the cache before returning it. This is the pattern I reach for most often because it only caches data that is actually requested, and a cold cache degrades gracefully instead of failing outright.",
+          "The catch is that on a cache miss under high traffic, many requests can hit the database at the same time for the same key (a \"thundering herd\"). A short-lived lock or a request-coalescing layer around the miss path fixes this."
+        ]
+      },
+      {
+        "heading": "Write-through and TTLs",
+        "paragraphs": [
+          "Write-through caching updates the cache at the same time as the database, so reads are always fresh, at the cost of slower writes. I use this for data that changes rarely but is read constantly, like league standings in a project like E-Fiiri.",
+          "For everything else, a time-to-live (TTL) is the simplest invalidation strategy: accept that data can be briefly stale, and pick a TTL short enough that the staleness does not matter for the use case. A dashboard summary can tolerate a 30-second TTL; an account balance usually cannot."
+        ]
+      },
+      {
+        "heading": "The failure mode that actually matters",
+        "paragraphs": [
+          "The bug that bites teams in production is not a cache miss, it is a stale cache that never gets invalidated after a write, because the invalidation logic was added to one code path and forgotten in another. Whenever I add caching, I write the invalidation call right next to the write operation it corresponds to, not in a separate service, so it is impossible to change one without seeing the other."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zero-downtime-deploys",
+    "title": "Zero-Downtime Deployments with Render and GitHub Actions",
+    "category": "DevOps",
+    "icon": "fas fa-rocket",
+    "date": "2026-04-05",
+    "readTime": "6 min read",
+    "excerpt": "The GitHub Actions workflow I use to test, build, and deploy Node projects like Kiro Dhow to Render without taking the app offline.",
+    "content": [
+      {
+        "heading": "Why I automate deploys even on solo projects",
+        "paragraphs": [
+          "On personal projects like Kiro Dhow it would be easy to just push to Render manually. I set up GitHub Actions anyway, because a repeatable pipeline catches mistakes before they reach users, and it means deploying is a git push, not a checklist I have to remember."
+        ]
+      },
+      {
+        "heading": "The pipeline",
+        "paragraphs": [
+          "Every push to main triggers a workflow that installs dependencies, runs the test and lint scripts, and only then triggers a deploy hook on Render. If any step fails, the deploy simply does not happen, so a broken build never reaches production.",
+          "Render itself handles the zero-downtime part on the platform side: it builds the new version in a separate instance, health-checks it, and only swaps traffic over once the new instance is confirmed healthy. My job in the pipeline is just to make sure only a passing build ever reaches that step."
+        ]
+      },
+      {
+        "heading": "Environment variables and secrets",
+        "paragraphs": [
+          "Database URLs, JWT secrets, and API keys live in Render's environment variable settings and in GitHub Actions secrets, never in the repo. The workflow references them by name, so rotating a secret is a one-place change instead of a code change."
+        ]
+      },
+      {
+        "heading": "What I check before trusting a deploy",
+        "paragraphs": [
+          "After the deploy hook fires, I keep a simple health-check step that pings a /health endpoint on the new deployment and fails the workflow if it does not return 200 within a short window. It is a small addition, but it turns \"the deploy technically succeeded\" into \"the deploy actually works.\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cicd-for-small-teams",
+    "title": "A Practical Guide to CI/CD for Small Teams",
+    "category": "DevOps",
+    "icon": "fas fa-infinity",
+    "date": "2026-05-11",
+    "readTime": "5 min read",
+    "excerpt": "You do not need a platform team to get real value from CI/CD. Here is the minimal setup I recommend for a two or three person project.",
+    "content": [
+      {
+        "heading": "Start smaller than you think",
+        "paragraphs": [
+          "CI/CD gets talked about like it requires a dedicated DevOps hire, but for a small team the entire useful pipeline can be a single YAML file: install, lint, test, build, deploy. The value comes from having any automated gate at all, not from how sophisticated it is."
+        ]
+      },
+      {
+        "heading": "Continuous integration first",
+        "paragraphs": [
+          "Before worrying about deployment, get continuous integration right: every pull request should automatically run the test suite and linter, and the PR should not be mergeable if either fails. This alone catches the majority of \"it worked on my machine\" bugs before they reach main.",
+          "I keep the CI job fast on purpose, usually under two minutes, because a slow pipeline is a pipeline people start ignoring or skipping."
+        ]
+      },
+      {
+        "heading": "Then continuous deployment",
+        "paragraphs": [
+          "Once CI is trusted, wire main to auto-deploy to a staging environment on every merge, and keep production deploys behind a manual approval step or a tag push. This gives a small team the speed of continuous deployment for staging, with a deliberate checkpoint before anything reaches real users."
+        ]
+      },
+      {
+        "heading": "The habit that matters more than the tooling",
+        "paragraphs": [
+          "The biggest win is not GitHub Actions versus another CI tool, it is the team habit of never merging a PR with a red check. Once that becomes non-negotiable, the pipeline starts doing its job: main is always deployable, and deploying stops being an event people schedule around."
+        ]
+      }
+    ]
+  }
+]

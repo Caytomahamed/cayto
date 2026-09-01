@@ -1,119 +1,80 @@
-const skills = {
-  bootstrap: '#7952B355',
-  javascript: '#8B800055',
-  css: '#0000FF55',
-  scss: '#FFC0CB55',
-  tailwindcss: '#38B2AC55',
-  reactjs: '#61DAFB55',
-  expo: '#00002055',
-  nodejs: '#68A06355',
-  expressjs: '#00000055',
-  php: '#777BB455',
-  laravel: '#FF2D2055',
-  reduxtoolkit: '#764ABC55',
-  sqlite: '#003B5755',
-  mysql: '#4479A155',
-  mongodb: '#47A24855',
-  git: '#F0503255',
-  github: '#18171755',
-  figma: '#F24E1E55',
-  knexjs: '#F0000055',
-  api: '#FF6C3755',
-  reactnative: '#61DAFB55',
-  preview: '#FF450055',
-};
+import { getProjects, getTagStyle } from './data/projects.js';
 
-const projects = [
-  {
-    name: 'Kiro dhow',
-    heroImg: 'dashboard.PNG',
-    description:
-      'Kiro Dhow streamlines rental management, connecting tenants and landlords for easy renting, payments, and maintenance.',
-    tags: ['scss', 'reactjs', 'reduxtoolkit', 'nodejs', 'expressjs', 'knexjs'],
-    viewLink: 'https://kirodhow.onrender.com/',
-    githubLink: 'https://github.com/Caytomahamed/RentHouseMS.git',
-  },
-  {
-    name: 'Caraabe',
-    heroImg: 'ticket.PNG',
-    description:
-      'Caraabe is a bus transport management system designed to optimize scheduling and routing, reducing delays and improving customer service.',
-    tags: ['css', 'javascript', 'php', 'mysql'],
-    viewLink: '#',
-    githubLink: 'https://github.com/Caytomahamed/Transportation-MS.git',
-  },
-  {
-    name: 'U-turn',
-    heroImg: 'uturn.png',
-    description:
-      'U-turn connects university students with safe and secure taxi rides, solving the challenge of finding reliable transportation on campus.',
-    tags: ['reactnative', 'reduxtoolkit', 'nodejs', 'expressjs', 'mysql'],
-    viewLink: '#',
-    githubLink: 'https://github.com/Caytomahamed/uturn.git',
-  },
-  {
-    name: 'E-Fiiri',
-    heroImg: 'standing.png',
-    description:
-      'E-Fiiri is an interactive football league management system offering team standings, schedules, player info, and live scores.',
-    tags: ['css', 'javascript', 'php', 'mysql'],
-    viewLink: '#',
-    githubLink: 'https://github.com/Caytomahamed/RentHouseMS.git',
-  },
-  {
-    name: 'IEditor',
-    heroImg: 'IEditor.png',
-    description:
-      'IEditor is a web-based code editor for writing and editing HTML, CSS, and JavaScript, with live preview functionality.',
-    tags: ['html', 'css', 'javascript'],
-    viewLink: 'https://caytomahamed.github.io/IEditor',
-    githubLink: 'https://github.com/Caytomahamed/IEditor.git',
-  },
-];
-
-const displayCards = () => {
+const displayCards = async () => {
   const cardCon = document.querySelector('.projects__box');
+  let projects = await getProjects();
+
+  const limit = Number(cardCon.dataset.limit);
+  if (limit) projects = projects.slice(0, limit);
 
   const html = projects
     .map(
       (project) =>
-        `<div class="card">
+        `<a href="/projectDetails.html?id=${project.id}" class="card fade-in" data-type="${project.type}">
           <img src="/assets/images/${project.heroImg} " alt="project" />
           <div class="card__content">
             <h3>${project.name}</h3>
-                  <div class="card__content__tags">
+            <p class="card__content__desc">${project.description}</p>
+            <div class="card__content__tags">
         ${project.tags
           .map((tag) => {
-            return `<p class="card_tag_js" style="background:${skills[tag]}">${tag}</p>`;
+            const { bg, text } = getTagStyle(tag);
+            return `<p class="card_tag_js" style="background:${bg}; color:${text}">${tag}</p>`;
           })
           .join('')}
       </div>
           </div>
-          </div>
-        </div>`
+        </a>`
     )
     .join('');
 
   cardCon.insertAdjacentHTML('beforeend', html);
+
+  initProjectFilters(cardCon);
+};
+
+const initProjectFilters = (cardCon) => {
+  const filterBar = document.querySelector('.projects__filters');
+  if (!filterBar) return;
+
+  const filterBtns = filterBar.querySelectorAll('.filter-btn');
+  const cards = cardCon.querySelectorAll('.card');
+
+  const FILTER_TRANSITION_MS = 350;
+
+  const applyFilter = (filter) => {
+    cards.forEach((card) => {
+      const matches = filter === 'all' || card.dataset.type === filter;
+
+      // Cards keep a scroll-reveal transition-delay for their staggered
+      // entrance; clear it here so filter transitions are never delayed.
+      card.style.transitionDelay = '0s';
+
+      if (matches) {
+        card.style.display = '';
+        // A card can match a filter before scroll-reveal ever ran on it
+        // (it was off-screen when the page loaded); mark it visible now so
+        // choosing a filter is what reveals it, not an unrelated scroll.
+        card.classList.add('visible');
+        requestAnimationFrame(() => card.classList.remove('card--filtered-out'));
+      } else {
+        card.classList.add('card--filtered-out');
+        setTimeout(() => {
+          if (card.classList.contains('card--filtered-out')) {
+            card.style.display = 'none';
+          }
+        }, FILTER_TRANSITION_MS);
+      }
+    });
+  };
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.filter);
+    });
+  });
 };
 
 export default displayCards;
-
-// <div class="card__content">
-//       <h3>${project.name}</h3>
-//       <p class="card__content__desc">${project.description}</p>
-
-//       <div class="card__content__source">
-//         <a
-//           href="${project.viewLink}"
-//           ${project.viewLink !== '#' ? 'target="_blank"' : ''}
-//           onclick="${project.viewLink === '#'
-//             ? "alert('Coming Soon'); return false;"
-//             : ''}"
-//         >
-//           <i class="fas fa-eye"></i>View</a
-//         >
-//         <a href="${project.githubLink}" target="_blank"
-//           ><i class="fas fa-solid fa-code"></i>Code</a
-//         >
-//       </div>

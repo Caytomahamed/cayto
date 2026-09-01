@@ -3,6 +3,12 @@ const navItems = [
   { name: 'Contact', icon: 'fas fa-envelope', link: '/contact.html' },
   { name: 'Blog', icon: 'fas fa-blog', link: '/blogs.html' },
   { name: 'About', icon: 'fas fa-user', link: '/' },
+  {
+    name: 'Resume',
+    icon: 'fas fa-file-arrow-down',
+    link: '/assets/resume.pdf',
+    external: true,
+  },
 ];
 
 const displayNav = () => {
@@ -26,7 +32,9 @@ const displayNav = () => {
             (item) =>
               `<li class="navbar__item">
             <i class="${item.icon}"></i>
-            <a href="${item.link}" class="navbar__link active">
+            <a href="${item.link}" class="navbar__link active"${
+                item.external ? ' target="_blank" rel="noopener"' : ''
+              }>
               ${item.name}
             </a>
           </li>`
