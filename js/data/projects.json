@@ -1,5 +1,4 @@
 [
-  
   {
     "id": "kiro-dhow",
     "name": "Kiro Dhow",
@@ -38,10 +37,36 @@
     "challenges": "The hardest part was keeping one codebase honest across two databases — SQLite in development, MySQL in production — so every schema change went through Knex.js migrations to stop drift before it started. Keeping WebSocket events and Redux state in sync took the same care, so the UI never showed a stale number."
   },
   {
+    "id": "s-pay",
+    "name": "S-Pay",
+    "type": "mobile",
+    "heroImg": "projects/spay/00.jpeg",
+    "gallery": [
+      "projects/spay/00.jpeg",
+      "projects/spay/00.jpeg",
+      "projects/spay/00.jpeg"
+    ],
+    "description": "A native Android app that captures Zaad mobile money SMS notifications and forwards them to a backend, so small merchants can verify payments automatically without a business license or an official payment API.",
+    "role": "Android Developer",
+    "duration": "Jan 2026 - Present",
+    "tags": ["kotlin", "android", "room db"],
+    "viewLink": "",
+    "githubLink": "",
+    "overview": "S-Pay gives small merchants a way to verify Zaad payments when they have no access to an official payment API. The Android app listens for incoming Zaad SMS notifications, stores them locally with Room, and forwards them to a backend for payment verification, replacing manual checking of phone messages. It is an independent product with a one-time setup fee plus a small per-transaction fee.",
+    "features": [
+      "Background SMS capture that picks up Zaad payment notifications as they arrive",
+      "Local persistence with Room so no message is lost when the device is offline",
+      "Automatic forwarding of captured messages to the backend for verification",
+      "Built for merchants without a business license or official payment API access",
+      "Monetization built in: one-time setup fee plus per-transaction fee"
+    ],
+    "challenges": "The hardest part is reliability. Android can restrict background work and kill apps, so capturing every SMS and forwarding it exactly once means Room acts as a queue that retries after failures or offline periods, with duplicates handled so a merchant never marks an order as paid by mistake."
+  },
+  {
     "id": "hargeisa-hackathon-mvp",
     "name": "University of Hargeisa Hackathon — 1st Place",
     "type": "app",
-    "heroImg":  "projects/uturn/00.PNG",
+    "heroImg": "projects/uturn/00.PNG",
     "gallery": [
       "projects/uturn/00.PNG",
       "projects/uturn/01.PNG",
